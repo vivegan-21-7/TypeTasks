@@ -41,3 +41,4 @@ function filterByStatus(
 function deleteTask(tasks: Task[], id: number): Task[] {
   return tasks.filter((task) => task.id !== id);
 }
+// TypeTasks Model - Part 1 completed
