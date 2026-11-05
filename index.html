@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeTasks - Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>TypeTasks</h1>
+        <p>Organize your daily tasks</p>
+
+        <div class="add-section">
+            <input type="text" id="title" placeholder="Enter your task">
+            
+            <select id="status">
+                <option value="todo">To Do</option>
+                <option value="in-progress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+
+            <button id="add">Add Task</button>
+        </div>
+
+        <div class="filters">
+            <button class="filter" data-status="all">All</button>
+            <button class="filter" data-status="todo">To Do</button>
+            <button class="filter" data-status="in-progress">In Progress</button>
+            <button class="filter" data-status="done">Done</button>
+        </div>
+
+        <ul id="list"></ul>
+    </div>
+
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>

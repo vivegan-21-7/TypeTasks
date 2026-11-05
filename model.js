@@ -1,29 +1,36 @@
-"use strict";
-// TypeTasks - Part 1
-Object.defineProperty(exports, "__esModule", { value: true });
-// Used to give each new task a unique ID
+// TypeTasks - Typed Model
 let nextId = 1;
 // Add a new task
-function addTask(tasks, title) {
+export function addTask(tasks, title) {
     const newTask = {
         id: nextId++,
-        title: title,
+        title,
         status: "todo"
     };
     return [...tasks, newTask];
 }
-// Mark a task as done using its ID
-function completeTask(tasks, id) {
-    return tasks.map((task) => task.id === id
-        ? { ...task, status: "done" }
-        : task);
+// Complete a task
+export function completeTask(tasks, id) {
+    return tasks.map(task => task.id === id ? { ...task, status: "done" } : task);
 }
-// Return only tasks with the selected status
-function filterByStatus(tasks, status) {
-    return tasks.filter((task) => task.status === status);
+// Advance task: todo -> in-progress -> done
+export function advanceTask(tasks, id) {
+    return tasks.map(task => {
+        if (task.id !== id)
+            return task;
+        const nextStatus = task.status === "todo"
+            ? "in-progress"
+            : task.status === "in-progress"
+                ? "done"
+                : "done";
+        return { ...task, status: nextStatus };
+    });
 }
-// Delete a task using its ID
-function deleteTask(tasks, id) {
-    return tasks.filter((task) => task.id !== id);
+// Filter tasks
+export function filterByStatus(tasks, status) {
+    return tasks.filter(task => task.status === status);
 }
-//# sourceMappingURL=model.js.map
+// Delete a task
+export function deleteTask(tasks, id) {
+    return tasks.filter(task => task.id !== id);
+}
